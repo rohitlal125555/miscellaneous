@@ -1,12 +1,23 @@
+###################################################################################################################
+# Disclaimer:
+# This code is designed to simulate mouse clicks for testing purposes only.
+# The author of this code cannot be held responsible for any consequences resulting from the use or misuse of
+# this code. By using this code, you agree to use it responsibly and in accordance with applicable laws and
+# regulations.
+###################################################################################################################
+
 import pyautogui as pgui
 import time
 import random
 
-# config 
-enable_audio = False
+# config
+# All the below configs are purposely kept as ranges to make the program dynamic.
+# The final value for each entry is chosen randomly.
+enable_audio = False            # If enabled, the program speaks the application and num of mouse movements chosen.
 sleep_time_range = [30, 60]     # sleep time between each simulation
 taskbar_apps_range = [4, 10]    # range of apps on task bar to switch between. For eg: 1 - means 1st icon on taskbar.
 num_mouse_movements = [1, 4]    # number of intra-simulation mouse movements
+mouse_movement_speed = [1, 3]   # speed of mouse movement. For eg: 2 - means the mouse movement will take 2 secs to complete
 
 if enable_audio: 
     from win32com.client import Dispatch
@@ -42,7 +53,7 @@ while True:
         pgui.moveTo(
             random.randint(0, sWidth), 
             random.randint(0, sHeight), 
-            random.randint(1, 3), 
+            random.randint(*),
             random.choice(tweening_modes)
         )
         # pgui.click()
